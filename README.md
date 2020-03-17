@@ -43,7 +43,7 @@ With the above parameters, we can do the following
 4. Vagrant (v 2.2.5, or higher) 
 * Instructions to install here: https://www.vagrantup.com/downloads.html
 * (only if using Windows 10 or Windows 8 Pro) Disable Hyper-V, see instructions to disable here: https://www.poweronplatforms.com/enable-disable-hyper-v-windows-10-8/
-* Check installation with the command `vagrant -v`'
+* Check installation with the command `vagrant -v`
 
 5. Helloworld product 
 * Instruction to setup: https://github.com/acapozucca/helloworld/tree/master/product.helloworld
