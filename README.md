@@ -108,11 +108,8 @@ cd ~/<git_root_folder>/Artillery_Tutorial
 
 ```
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.186 sec
-
 Results :
-
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
-
 ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 ------------------------------------------------------------------------
