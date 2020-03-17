@@ -168,7 +168,7 @@ artillery run hello.yml
 
 ## Artillery report
 
-when u run a test script as mentioned above, you may get a report like the below
+when you run a test script as mentioned above, you may get a report like the below
 
 ```
 Complete report @ 2019-01-02T17:32:36.653Z
