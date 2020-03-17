@@ -12,7 +12,7 @@ In this project we will load test our product helloworld. We will determine some
 
 ## Goals
 
-With the above parameters, we will determine our products
+With the above parameters, we can do the following
 * Analyze performance
   - How fast is it? / Is it fast enough?
 
@@ -21,7 +21,6 @@ With the above parameters, we will determine our products
 
 * Analyze reliability
   - Does it degrade gracefully under stress?
-  - Monitoring and alerting working as intended?
 
 * Capacity testing
   - Can we handle projected load with accepted performance and with architecture/ hardware we already have
@@ -49,3 +48,65 @@ With the above parameters, we will determine our products
 5. Helloworld product 
 * Instruction to setup: https://github.com/acapozucca/helloworld/tree/master/product.helloworld
 * This project needs this product to be deployed beforehand running any vagrant test.
+
+
+## Set local working environment
+
+1- Clone this repo
+
+2- Import the given project into your favourite IDE
+
+3- Build the project using Maven. Either you do it from within the IDE, or from a terminal. From the terminal you must:
+
+3.1-  Get to the directory
+
+```
+cd ~/<git_root_folder>/Artillery_Tutorial
+```
+
+3.2- Run the comand.
+
+```
+mvn clean install
+```
+
+Running this command should shown (almost at the end of the output):
+
+```
+[INFO] BUILD SUCCESS
+```
+
+
+**Note**
+
+* The project is ready to be imported on the Eclipse IDE as an existen Maven project.
+
+
+## Check local testing environment setup and run the test on startup
+
+
+1-  Get to the directory
+
+```
+cd ~/<git_root_folder>/Artillery_Tutorial
+```
+
+2- Start the virtual environment: 
+```
+ vagrant up
+```
+
+
+3- It will automatically install all the required dependencies and start our test. You can see the test result like below.
+
+```
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.186 sec
+
+Results :
+
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+
+------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+------------------------------------------------------------------------
+```
