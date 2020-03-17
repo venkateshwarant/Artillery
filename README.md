@@ -49,6 +49,13 @@ With the above parameters, we can do the following
 * Instruction to setup: https://github.com/acapozucca/helloworld/tree/master/product.helloworld
 * This project needs this product to be deployed beforehand running any vagrant test.
 
+6. NPM (version 6.13.4, or higher)
+* Instructions to install here: https://www.npmjs.com/get-npm
+* Check installation with the command `npm --version`
+
+7. Artillery (version 1.6.0-29, or higher)
+* Instruction to install here: https://artillery.io/docs/getting-started/
+* Check installation with the command `artillery --version`
 
 ## Set local working environment
 
