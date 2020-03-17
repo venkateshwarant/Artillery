@@ -143,21 +143,13 @@ simulate realistic user behavior with scenarios. Let’s see how we’d run one 
 
 ```
 config:
-
   target: ‘http://192.168.33.14:8080’
-
   phases:
-
     - duration: 60
-
       arrivalRate: 20
-
   scenarios:
-
     - flow:
-
       - get:
-
         url: "/helloworld/helloworld.html"
 ```
 * Run the test with:
