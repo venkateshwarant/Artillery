@@ -117,3 +117,21 @@ Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
 [INFO] BUILD SUCCESS
 ------------------------------------------------------------------------
 ```
+
+## Test script
+
+Our test script may contain the following-
+
+* One or more scenarios
+
+* One or more load phases
+
+## Artillery quick command
+
+Artillery has a quick command which allows you to use it for ad-hoc testing (in a manner similar to ab). Run:
+
+```
+artillery quick --count 10 -n 20 http://192.168.33.14:8080/helloworld/helloworld.html
+```
+
+This command will create 10 "virtual users" each of which will send 20 HTTP GET requests to corresponding url.
