@@ -284,7 +284,7 @@ Codes:
 
 * Here we can note that the 99th percentile value has increased. ie. Atleast 1 in 100 request took arround 83.7ms which is higher than the previous. This is because this request needed to be handled by a java servlet.
 
-## Test case for feature 2
+## Test case for feature 3
 
 * Now we have to test an HTTP POST API, so can create a separate yaml file for test case because there will more lines of code. Copy and paste the below content in test.yml
 
