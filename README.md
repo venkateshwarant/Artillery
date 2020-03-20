@@ -251,3 +251,87 @@ Codes:
 
 
 ## Test case for feature 2
+
+It is similar to that of the previous test, except that we are testing a dynamic HTML page which returns the current server time.
+
+Test case is as follows
+
+```
+artillery quick --count 200 -n 200 http://192.168.33.14:8080/helloworld/FirstServlet
+```
+
+Here we have created the similar load as that of previous test.
+
+### Sample summary report
+
+```
+Scenarios launched: 200
+Scenarios completed: 200
+Requests completed: 40000
+RPS sent: 2162.16
+Request latency:
+    min: 0.6
+    max: 216.4
+    median: 30.4
+    p95: 47.3
+    p99: 83.4
+Scenario counts: 0: 200 (100%)
+Codes:
+    200: 40000
+```
+
+### Report Inference
+
+* Here we can note that the 99th percentile value has increased. ie. Atleast 1 in 100 request took arround 83.7ms which is higher than the previous. This is because this request needed to be handled by a java servlet.
+
+## Test case for feature 2
+
+* Now we have to test an HTTP POST API, so can create a separate yaml file for test case because there will more lines of code. Copy and paste the below content in test.yml
+
+```
+config:
+  target: "http://192.168.33.14:8080/helloworld"
+  phases:
+    - duration: 10
+      arrivalRate: 4000
+scenarios:
+  - flow:
+      - post:
+          url: "/insert.do?name=Hello&value=123"
+```
+
+* Here we can see that we have configured the target url as "http://192.168.33.14:8080/helloworld", this means that all the scenarios written below points to this url.
+
+* For duration of 10 seconds, we have created 4000 Requests per second. So totally we hit the server with 40000 HTTP POST request in 10 seconds.
+
+
+### Sample summary report
+
+```
+Scenarios launched: 40000
+Scenarios completed: 27607
+Requests completed: 27607
+RPS sent: 462.59
+Request latency:
+    min: 1.8
+    max: 64018.2
+    median: 1607.5
+    p95: 22031.2
+    p99: 56815.2
+Scenario counts: 0: 40000 (100%)
+Codes:
+    200: 27607
+Errors:
+    EADDRNOTVAIL: 8272
+    ECONNRESET: 488
+    ETIMEOUT: 3633
+```
+
+### Report Inference
+
+* Here we can see that the 99th percentile value is significantly high, for every 1 request in 100 took more than 56.8152Seconds to respond. 
+
+* out of 40000 request only 27607 has been responded properly, and 3633 requests has been timed out because of very large delay. 
+
+* The above report tells us that our server does not fit our load requirement, thus we need to upgrade our server if we really need to meet that load need.
+
