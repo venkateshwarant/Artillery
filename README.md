@@ -160,7 +160,6 @@ artillery run hello.yml
 when you run a test script as mentioned above, you may get a report like the below
 
 ```
-Complete report @ 2019-01-02T17:32:36.653Z
 Scenarios launched: 300
 Scenarios completed: 300
 Requests completed: 600
@@ -189,12 +188,66 @@ interval.
 
 * **RPS sent** is the average number of requests per second completed in the preceding 10 seconds (or throughout the test)
 
-* **Request latency** is in milliseconds, and p95 and p99 values are the 95th and 99th percentile values (a request
-latency p99 value of 500ms means that 99 out of 100 requests took 500ms or less to complete).
-
+* **99th percentile latency**
+A 99th percentile latency of 30 ms means that every 1 in 100 requests experience 30 ms of delay. 
+For a high traffic website like LinkedIn, this could mean that for a page with 1 million page views per day then 10,000 of those page views experience the delay. However, most systems these days are distributed systems and 1 request can actually create multiple downstream requests. So 1 request could create 2 requests, or 10, or even 100! If multiple downstream requests hit a single service affected with longtail latencies, our problem becomes scarier.
+Thus load testing is a must for these webpages
 * **Codes** provides the breakdown of HTTP response codes received.
 
 * If you see **NaN** ("not a number") reported as a value, that means not enough responses have been received to calculate the
 percentile.
 
 * If there are any **errors** (such as socket timeouts), those will be printed under Errors in the report as well.
+
+
+
+
+## Our test product
+we have the following 3 features of helloworld to be tested, they are-
+
+1. Static html page: http://192.168.33.14:8080/helloworld/helloworld.html
+
+2. Timestamp service: http://192.168.33.14:8080/helloworld/FirstServlet
+
+3. A REST API which handles a post request and performs a DB write operation: http://192.168.33.14:8080/helloworld/insert?name=Hello2&value=1376
+
+
+
+## Test case for feature 1
+
+Since this is a static html page, we can test it with the following command
+
+```
+artillery quick --count 200 -n 200 http://192.168.33.14:8080/helloworld/helloworld.html
+```
+
+Here note that, we have created 200 virtual users, each will send 200 HTTP GET requests to corresponding url. So totally we would make 40,000 HTTP GET request to http://192.168.33.14:8080/helloworld/helloworld.html
+
+### Sample summary report
+
+```
+Scenarios launched: 200
+Scenarios completed: 200
+Requests completed: 40000
+RPS sent: 2196.4
+Request latency:
+    min: 0.2
+    max: 216.5
+    median: 34.3
+    p95: 39.9
+    p99: 50.4
+Scenario counts: 0: 200 (100%)
+Codes:
+    200: 40000
+```
+
+### Report Inference
+
+* Here we can notice that all the 40000 created request has been reasponded properly, therefore we have 200 response code for all request. 
+
+* The load we have created is 2196.4 request per second, which is considerably high.
+
+* 99th percentile value is 50.4, thus every 1 request per 100 took more than 50.4ms. The value is high for a live server. Though comparing to the report of other features this is the smallest value.
+
+
+## Test case for feature 2
