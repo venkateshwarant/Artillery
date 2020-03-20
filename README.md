@@ -1,4 +1,4 @@
-# Artillery_Tutorial
+# Artillery Tutorial
 
 
 ## General overview
