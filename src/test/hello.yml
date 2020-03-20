@@ -1,0 +1,9 @@
+config:
+  target: "http://192.168.33.14:8080/helloworld"
+  phases:
+    - duration: 10
+      arrivalRate: 4000
+scenarios:
+  - flow:
+      - post:
+          url: "/insert.do?name=Hello&value=123"
