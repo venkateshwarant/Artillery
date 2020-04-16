@@ -46,7 +46,7 @@ With the above parameters, we can do the following
 * Check installation with the command `vagrant -v`
 
 5. **Helloworld product**
-* Instruction to setup: https://github.com/acapozucca/helloworld/tree/master/product.helloworld
+* Instruction to setup: https://github.com/acapozucca/helloworld
 * This project needs this product to be deployed beforehand running any vagrant test.
 
 6. **NPM** (version 6.13.4, or higher)
@@ -117,7 +117,7 @@ Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
 
 ## Test script
 
-Our test script may contain the following-
+Our test script may contain the following:
 
 * One or more scenarios
 
@@ -136,7 +136,7 @@ This command will create 10 "virtual users" each of which will send 20 HTTP GET 
 ## Run a test script
 
 * While the quick command can be useful for very simple tests, the full power of Artillery lies in being able to
-simulate realistic user behavior with scenarios. Let’s see how we’d run one of those.
+simulate realistic user behaviour with scenarios. Let’s see how we’d run one of those.
 
 ```
 config:
